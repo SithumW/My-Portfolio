@@ -33,8 +33,8 @@ const [introDone, setIntroDone] = useState(false);
       <About />
       <Skills />
       <Projects />
-      <Experience />
-      <Testimonials />
+ {/*     <Experience />
+      <Testimonials /> */} 
       <Contact/>
       <Footer />
 
