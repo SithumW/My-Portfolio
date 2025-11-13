@@ -1,0 +1,68 @@
+import { useState, useMemo, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
+export default function IntroAnimation({ onFinish }) {
+
+const greetings = useMemo(() => [
+  "Hello, ",
+  "Hola, ",       // Spanish
+  "Bonjour, ",    // French
+  "Ciao, ",       // Italian
+  "Olá, ",        // Portuguese
+  "नमस्ते, ",     // Hindi
+  "こんにちは, ",  // Japanese (Konnichiwa)
+  "안녕하세요, ",   // Korean (Annyeonghaseyo)
+  "你好, ",        // Chinese (Ni hao)
+  "வணக்கம், ",     // Tamil (Vanakkam)
+  "Привет, ",     // Russian (Privet)
+  "Salam, ",      // Arabic
+  "Hej, ",        // Swedish / Danish
+  "Shalom, ",     // Hebrew
+  "ආයුබෝවන්, "  // Sinhala (Ayubowan)
+
+], []);
+
+const [index, setIndex] = useState(0);
+const [visible, setVisible] = useState(true);
+
+useEffect(() => {
+  if (index < greetings.length - 1) {
+    const id = setTimeout(() => {
+      setIndex((i) => i + 1);
+    }, 180);
+    return () => clearTimeout(id);
+  } else {
+    const t = setTimeout(() => {
+      setVisible(false);
+    }, 900);
+    return () => clearTimeout(t);
+  }
+}, [index, greetings.length]);
+
+  return (
+    <AnimatePresence onExitComplete={onFinish}>
+      {visible && (
+        <motion.div
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black text-white overflow-hidden"
+          initial={{ y: 0 }}
+          exit={{ y: "-100%" }}
+          transition={{
+            duration: 1.05,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
+          <motion.h1
+            key={index}
+            className="text-5xl md:text-8xl font-bold"
+            initial={{ opacity: 0, y: 0.8 }}
+            animate={{ opacity: 1, y: 1 }}
+            exit={{ opacity: 0, y: 1.2 }}
+            transition={{ duration: 0.12 }}
+          >
+            {greetings[index]}
+          </motion.h1>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  )
+}
