@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import logo from "../assets/logo.png"
+ /* import logo from "../assets/logo.png" */
 import { FiMenu } from "react-icons/fi";
 import OverlayMenu from "./OverlayMenu";
 
@@ -74,7 +74,7 @@ useEffect(()=>{
     <div className="flex items-center space-x-2">
 
       {/*<img src={logo} alt = "logo" className = "w-8 h-8"/>*/}
-      
+
       <div className="text-2xl font-bold text-white hidden sm:block"> SithumW</div>
 
     </div>
