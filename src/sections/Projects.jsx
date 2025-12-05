@@ -98,7 +98,7 @@ const projects = useMemo(() => [
     title: "POS System (Angular)",
     link: "https://github.com/SithumW/Pos-System-Devops.git",
     description: "A modern Point of Sale system built with Angular and Express, featuring inventory management and real-time billing.",
-    bgColor: "#ff8080ff",
+    bgColor: "#076d7dff",
     image: isMobile ? posImg : posImgWide
   }
 ], [isMobile]); //re run only when isMobile changes
