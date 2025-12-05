@@ -192,7 +192,7 @@ if (!avatarLoaded) {
 
   <a href ="#projects"
   className="px-6 py-3 rounded-full font-medium text-lg text-white
-  bg-gradient-to-r from-[#ff6b35] via-[#ff6b35] to-[#ffcc02]
+  bg-gradient-to-r from-[#ffcc02] via-[#ff6b35] to-[#ff6b35]
   shadow-lg hover:scale-105 transition-all"
 
   >View My Work</a>
