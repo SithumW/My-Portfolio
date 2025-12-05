@@ -27,14 +27,10 @@ export default function Home(){
 
 const roles = useMemo(()=> ["Developer", "Innovator","CTF Player","Tech Enthusiast"],[]);
 
-const [avatarLoaded, setAvatarLoaded] = useState(false);
+
 const [index, setIndex] =useState (0);        // Current role index
 const [subindex, setSubindex] = useState (0); // Current character index
 const [deleting, setDeleting] = useState (false); // Whether currently deleting characters
-
-const handleAvatarLoad = () => {
-  setAvatarLoaded(true);
-};
 
 
 
@@ -110,7 +106,7 @@ useEffect(() => {
           <motion.div
           className="mb-3 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-white tracking-wide min-h-[1.6em]"
           initial={{opacity:0, y:12}}
-          animate={avatarLoaded ? {opacity:1, y:0} : {opacity:0, y:12}}
+          animate={{opacity:1, y:0}}
           transition={{duration:0.6}} 
           >
             <span>
@@ -130,7 +126,7 @@ useEffect(() => {
           <motion.h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text
           bg-gradient-to-r from-[#1cd8d2] via-[#00bf8f] to-[#302b63] drop-shadow-lg"
           initial={{opacity:0, y:40}}
-          animate={avatarLoaded ? {opacity:1, y:0} : {opacity:0, y:40}}
+          animate={{opacity:1, y:0}}
           transition={{duration:1}}
           >
 
@@ -144,7 +140,7 @@ useEffect(() => {
 
           <motion.p className ="mt-6 text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl ms-auto lg:mx-0"
           initial={{opacity:0, y:20}}
-          animate={avatarLoaded ? {opacity:1, y:0} : {opacity:0, y:20}}
+          animate={{opacity:1, y:0}}
           transition={{delay : 0.4, duration:0.8}}
           >
             I love bringing ideas to life through code — blending creativity, technology, and a bit of curiosity to build things that are smart, useful, and fun to create.
@@ -152,7 +148,7 @@ useEffect(() => {
 
 <motion.div className ="mt-10 flex flex-wrap itemx-center justify-center lg:justify-start gap-6" 
   initial={{opacity:0}}
-  animate={avatarLoaded ? {opacity:1} : {opacity:0}}
+  animate={{opacity:1}}
   transition={{delay:0.8, duration:0.8}}>
 
 
@@ -183,7 +179,6 @@ useEffect(() => {
       whileHover="hover"
       whileTap="tap"
       className="text-gray-300"
-      style={{ opacity: avatarLoaded ? 1 : 0 }}
     >
       <Icon />
     </motion.a>
@@ -218,10 +213,9 @@ useEffect(() => {
         right :"-40px", width: "mon(55vw,780px)", maxHeight :"90vh", bottom:"10px"
 
       }}
-      onLoad={handleAvatarLoad}
       initial={{opacity:0, y:40, scale:0.98}}
-      animate={avatarLoaded ? {opacity:1, y:0, scale:1.15} : {opacity:0, y:40, scale:0.98}}
-      transition={{duration:0.8}}
+      animate={{opacity:1, y:0, scale:1.15}}
+      transition={{delay:0.2, duration:0.8}}
 
 
       ></img>
