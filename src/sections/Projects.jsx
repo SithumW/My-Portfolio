@@ -3,7 +3,6 @@ import { useRef, useMemo, useEffect } from "react";
 import { useScroll, useMotionValueEvent } from "framer-motion";
 // For testing: map all project image variables to the same placeholder image
 // Replace `img1.JPG` with any real placeholder image in `src/assets` when available
-import placeholderImg from "../assets/img1.JPG";
 
 import swappoimg from "../assets/swappo_mobile.png";
 import swappoimgWide from "../assets/swappo_desktop.png";
@@ -33,7 +32,6 @@ const ecom_image = ecom;
 const ecom_wide_image = ecomWide;
 
 
-const smartclassroomImgWide = placeholderImg;
 const posImg = pos;
 const posImgWide = pos_wide;
 

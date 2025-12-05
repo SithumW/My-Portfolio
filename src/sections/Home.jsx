@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import ParticlesBackground from "../components/ParticlesBackground";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
-import avatar from "../assets/sithumw_superhero_rm.png";
+import avatar from "../assets/sithumw_superhero_rm-min.png";
 
 
 const socials = [ // Social media links
