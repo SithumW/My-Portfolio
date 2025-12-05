@@ -1,6 +1,6 @@
 
 import { motion } from "framer-motion";
-import avatar from "../assets/photo01.png"; // Your profile photo
+import avatar from "../assets/photo03.jpeg"; // Your profile photo
 
 export default function About(){
   // Background glow effects for visual appeal
@@ -76,11 +76,13 @@ export default function About(){
               
               {/* Photo container */}
               <div className="relative bg-gradient-to-r from-[#302b63] via-[#00bf8f] to-[#1cd8d2] p-1 rounded-2xl">
-                <div className="bg-black rounded-xl overflow-hidden">
+                <div className="bg-black rounded-xl overflow-hidden" style={{ contain: "layout style paint" }}>
                   <img 
                     src={avatar} 
                     alt="Profile picture" 
                     className="w-80 h-80 sm:w-96 sm:h-96 lg:w-[28rem] lg:h-[28rem] object-cover object-center transform hover:scale-105 transition-transform duration-500"
+                    style={{ aspectRatio: "1/1" }}
+                    loading="lazy"
                   />
                 </div>
               </div>

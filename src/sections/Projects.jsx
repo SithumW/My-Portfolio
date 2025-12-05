@@ -190,7 +190,8 @@ const activeProject = projects[activeIndex];
             `}
             style={{
               zIndex: 10,
-              transition: "box-shadow 250ms ease"
+              transition: "box-shadow 250ms ease",
+              contain: "layout style paint"
             }}
           >
             <img src={project.image} alt={project.title}
@@ -198,6 +199,9 @@ const activeProject = projects[activeIndex];
             style={{ 
               position: "relative",
               zIndex: 10,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
               filter: "drop-shadow(0 16px 40px rgba(0,0,0,0.65))",
               transition: "filter 200ms ease"
             }}

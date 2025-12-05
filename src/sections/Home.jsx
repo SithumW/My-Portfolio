@@ -181,7 +181,7 @@ if (!avatarLoaded) {
           animate={{opacity:1, y:0}}
           transition={{delay : 0.4, duration:0.8}}
           >
-            I love bringing ideas to life through code — blending creativity, technology, and a bit of curiosity to build things that are smart, useful, and fun to create.
+            I love bringing ideas to life through code, blending creativity, technology, and a bit of curiosity to build things that are smart, useful, and fun to create.
           </motion.p>
 
 <motion.div className ="mt-10 flex flex-wrap itemx-center justify-center lg:justify-start gap-6" 
@@ -248,9 +248,13 @@ if (!avatarLoaded) {
       <motion.img src={avatar} alt="SithumW"
       className="absolute top-1/2 -translate-y-1/2 object-contain select-none pointer-events-none"
       style={{
-        right :"-40px", width: "min(55vw,780px)", maxHeight :"90vh", bottom:"10px"
-
+        right :"-40px", 
+        width: "min(55vw,780px)", 
+        maxHeight :"90vh", 
+        aspectRatio: "1/1",
+        bottom:"10px"
       }}
+      loading="eager"
       initial={{opacity:0, y:40, scale:0.98}}
       animate={{opacity:1, y:0, scale:1.03}}
       transition={{delay:0.2, duration:0.8}}

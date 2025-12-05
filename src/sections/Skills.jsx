@@ -38,6 +38,7 @@ export default function Skills() {
     <section 
       id="skills"
       className="w-full h-[25vh] min-h-[300px] flex flex-col items-center justify-center relative bg-gradient-to-r from-gray-900 via-black to-gray-900 overflow-hidden"
+      style={{ contain: "layout style paint" }}
     >
       {/* Skills Title */}
       <div className="absolute top-4 sm:top-6 md:top-8 left-1/2 transform -translate-x-1/2 z-30">
