@@ -9,6 +9,7 @@ import Testimonials from "./sections/Testimonials";
 import Contact from "./sections/Contact";
 import ParticlesBackground from "./components/ParticlesBackground";
 import CustomCursor from "./components/CustomCursor";
+import AutoScroll from "./components/AutoScroll";
 import { useState } from "react";
 import IntroAnimation from "./components/IntroAnimation";
 
@@ -27,6 +28,7 @@ const [introDone, setIntroDone] = useState(false);
 
     <div className ="relative gradient text-white">
       <CustomCursor/>
+      <AutoScroll/>
 {  /*    <ParticlesBackground/> */}
       <Navbar />
       <Home />
