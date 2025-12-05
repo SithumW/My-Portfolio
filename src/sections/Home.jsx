@@ -195,12 +195,14 @@ useEffect(() => {
     <div className="relative hidden lg:block">
 
     <div
-    className ="absolute top-1/2 -translate-y-1/2 pointer-events-none"
+    className ="absolute pointer-events-none -z-10"
     style={{
-      right: "-1px",
+      top: "calc(50% - 20px)",
+      right: "calc(-110px + min(55vw,780px)/2 - min(22vw, 410px)/2)",
+      transform: "translateY(-65%)",
       width: "min(22vw, 410px)" , height : "min(40vh, 760px)" ,borderRadius :"50%",
       filter: "blur(38px)",opacity :0.32,
-      background : "conic-gradient(from 0deg, #1cd8d2, #00bf8f, #302b63, #1cd8d2)"
+      background : "conic-gradient(from 0deg, #ff6b35, #f7931e, #ffcc02, #ff6b35)"
     }}
     
     />
@@ -208,7 +210,7 @@ useEffect(() => {
       <img src={avatar} alt="SithumW"
       className="absolute top-1/2 -translate-y-1/2 object-contain select-none pointer-events-none"
       style={{
-        right :"-40px", width: "mon(55vw,780px)", maxHeight :"90vh"
+        right :"-40px", width: "mon(55vw,780px)", maxHeight :"90vh", bottom:"10px"
 
       }}
       initial={{opacity:0, y:40, scale:0.98}}
