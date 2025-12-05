@@ -97,7 +97,13 @@ export default function About(){
           >
             {/* Section title */}
             <div>
-              <h2 className="text-lg sm:text-xl font-semibold text-yellow-400 mb-2">
+              <h2 className="text-lg sm:text-xl font-semibold mb-2"
+                  style={{
+                    background: "conic-gradient(from 0deg, #ff6b35, #f7931e, #ffcc02, #ff6b35)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text"
+                  }}>
                 About Me
               </h2>
               <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white">

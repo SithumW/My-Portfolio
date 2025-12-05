@@ -22,12 +22,40 @@ const glowVarients ={
   tap: {scale: 0.95, y:0, transition : {duration:0.08}}
 }
 
+// Loading screen component
+const LoadingScreen = () => {
+  return (
+    <div className="fixed inset-0 bg-black z-50 flex items-center justify-center">
+      <div className="text-center">
+        <div className="mb-8">
+          <div className="w-32 h-32 mx-auto rounded-full relative flex items-center justify-center"
+               style={{
+                 background: "conic-gradient(from 0deg, #ff6b35, #1cd8d2, #00bf8f, #ff6b35)",
+                 animation: "spin 2s linear infinite"
+               }}>
+            <div className="w-28 h-28 rounded-full bg-black flex items-center justify-center">
+              <div className="w-6 h-6 rounded-full bg-gradient-to-r from-[#ff6b35] via-[#f7931e] to-[#ffcc02] animate-pulse"></div>
+            </div>
+          </div>
+        </div>
+        <motion.h2 
+          className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#ff6b35] via-[#f7931e] to-[#ffcc02]"
+          animate={{ opacity: [1, 0.5, 1] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+        >
+          Loading...
+        </motion.h2>
+      </div>
+    </div>
+  );
+};
+
 
 export default function Home(){
 
 const roles = useMemo(()=> ["Developer", "Innovator","CTF Player","Tech Enthusiast"],[]);
 
-
+const [avatarLoaded, setAvatarLoaded] = useState(false);
 const [index, setIndex] =useState (0);        // Current role index
 const [subindex, setSubindex] = useState (0); // Current character index
 const [deleting, setDeleting] = useState (false); // Whether currently deleting characters
@@ -59,7 +87,17 @@ useEffect(() => {
   return () => clearTimeout(timeout);
 }, [subindex, index, deleting, roles]);
 
+// Preload avatar image
+useEffect(() => {
+  const img = new Image();
+  img.onload = () => setAvatarLoaded(true);
+  img.src = avatar;
+}, []);
 
+// Show loading screen until avatar is loaded
+if (!avatarLoaded) {
+  return <LoadingScreen />;
+}
 
   return (
     <section
@@ -154,7 +192,7 @@ useEffect(() => {
 
   <a href ="#projects"
   className="px-6 py-3 rounded-full font-medium text-lg text-white
-  bg-gradient-to-r from-[#1cdBd2] via-[#00bf8f] to-[#302b63]
+  bg-gradient-to-r from-[#ff6b35] via-[#ff6b35] to-[#ffcc02]
   shadow-lg hover:scale-105 transition-all"
 
   >View My Work</a>
@@ -207,18 +245,18 @@ useEffect(() => {
     
     />
 
-      <img src={avatar} alt="SithumW"
+      <motion.img src={avatar} alt="SithumW"
       className="absolute top-1/2 -translate-y-1/2 object-contain select-none pointer-events-none"
       style={{
-        right :"-40px", width: "mon(55vw,780px)", maxHeight :"90vh", bottom:"10px"
+        right :"-40px", width: "min(55vw,780px)", maxHeight :"90vh", bottom:"10px"
 
       }}
       initial={{opacity:0, y:40, scale:0.98}}
-      animate={{opacity:1, y:0, scale:1.15}}
+      animate={{opacity:1, y:0, scale:1.03}}
       transition={{delay:0.2, duration:0.8}}
+      onLoad={() => setAvatarLoaded(true)}
 
-
-      ></img>
+      />
     </div>
 
 
