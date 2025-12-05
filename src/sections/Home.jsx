@@ -110,7 +110,7 @@ if (!avatarLoaded) {
         h-[70vw] sm:h-[50vw] md:h-[40vw]
         rounded-full
         bg-purple-700/20
-        bg-gradient-to-r from-[#302b63] via-[#00bf8f] to-[#1cd8d2]
+        bg-gradient-to-r from-[#ff6b35] via-[#f7931e] to-[#ffcc02]
         opacity-30 sm:opacity-20 md:opacity-10
         blur-[100px] sm:blur-[130px] md:blur-[150px]
         animate-pulse
