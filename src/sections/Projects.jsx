@@ -4,18 +4,38 @@ import { useScroll, useMotionValueEvent } from "framer-motion";
 // For testing: map all project image variables to the same placeholder image
 // Replace `img1.JPG` with any real placeholder image in `src/assets` when available
 import placeholderImg from "../assets/img1.JPG";
+
+import swappoimg from "../assets/swappo_mobile.png";
+import swappoimgWide from "../assets/swappo_desktop.png";
+
+
+import sparksense from "../assets/sparksense.jpg";
+import sparksensewide from "../assets/sparksense_wide_cropped.jpg";
+
+
+import ecom from "../assets/ecom.png";
+import ecomWide from "../assets/ecom_wide.png";
+
+
+import pos from "../assets/pos.png";
+import pos_wide from "../assets/pos_wide.png";
+
+
 import { AnimatePresence } from "framer-motion";
 import {motion} from "framer-motion";
 import ParticlesBackground from "../components/ParticlesBackground.jsx";
 
-const swappoImg = placeholderImg;
-const swappoImgWide = placeholderImg;
-const sparksenseImg = placeholderImg;
-const sparksenseImgWide = placeholderImg;
-const smartclassroomImg = placeholderImg;
+const swappoImg = swappoimg;
+const swappoImgWide = swappoimgWide;
+const sparksenseImg = sparksense;
+const sparksenseImgWide = sparksensewide;
+const ecom_image = ecom;
+const ecom_wide_image = ecomWide;
+
+
 const smartclassroomImgWide = placeholderImg;
-const posImg = placeholderImg;
-const posImgWide = placeholderImg;
+const posImg = pos;
+const posImgWide = pos_wide;
 
 
 /*
@@ -55,30 +75,30 @@ export default function Projects(){
 const projects = useMemo(() => [
   {
     title: "Swappo",
-    link: "https://swappo-demo.com",
+    link: "https://github.com/SithumW/Swappo.git",
     description: "A location-based e-commerce platform where users can buy, sell, and swap products nearby using React, Node.js, and MongoDB.",
-    bgColor: "#0d4d0d",
+    bgColor: "#327284aa",
     image: isMobile ? swappoImg : swappoImgWide
   },
   {
     title: "SparkSense",
-    link: "https://sparksense-demo.com",
+    link: "https://github.com/SithumW/SparkSense.git",
     description: "An IoT-powered energy monitoring system that tracks and visualizes real-time power usage with ESP32 and AWS integration.",
-    bgColor: "#1a237e",
+    bgColor: "#299ae0ff",
     image: isMobile ? sparksenseImg : sparksenseImgWide
   },
   {
-    title: "CRM",
-    link: "https://smartclassroom-demo.com",
-    description: "An intelligent classroom management system that automates and monitors electrical devices using IoT and cloud technology.",
-    bgColor: "#4a148c",
-    image: isMobile ? smartclassroomImg : smartclassroomImgWide
+    title: "Spring Microservices",
+    link: "https://github.com/SithumW/Ecommerce-microservices.git",
+    description: "A Spring Boot microservices-based e-commerce application with independent services for order management, product catalog, and user management.",
+    bgColor: "#b68d57ff",
+    image: isMobile ? ecom_image : ecom_wide_image
   },
   {
     title: "POS System (Angular)",
-    link: "https://pos-angular-demo.com",
+    link: "https://github.com/SithumW/Pos-System-Devops.git",
     description: "A modern Point of Sale system built with Angular and Express, featuring inventory management and real-time billing.",
-    bgColor: "#b71c1c",
+    bgColor: "#ff8080ff",
     image: isMobile ? posImg : posImgWide
   }
 ], [isMobile]); //re run only when isMobile changes
@@ -145,7 +165,9 @@ const activeProject = projects[activeIndex];
                   animate={{opacity: 1, y: 0}}
                   exit={{opacity: 0, y: 30}}
                   transition={{duration: 0.5, ease: "easeOut"}}
-                  className={`block text-center text-[clamp(2rem,6vw,5rem)] text-white/95 sm:absolute sm:-top-20 sm:left-[35%] lg:left-[-5%] sm:mb-0
+                  className={`block text-center ${
+                    isMobile ? "text-[clamp(1.5rem,4vw,2.5rem)]" : "text-[clamp(2rem,6vw,5rem)]"
+                  } text-white/95 sm:absolute sm:-top-20 sm:left-[35%] lg:left-[-5%] sm:mb-0
                   italic font-semibold ${
                     isMobile ? "-mt-24" : ""
                   }`}

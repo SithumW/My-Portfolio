@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import ParticlesBackground from "../components/ParticlesBackground";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
-import avatar from "../assets/avator.png";
+import avatar from "../assets/sithumw_superhero_rm.png";
 
 
 const socials = [ // Social media links
@@ -159,7 +159,7 @@ useEffect(() => {
 
   >View My Work</a>
 
-  <a href ="/Resume.pdf"
+  <a href ="/CV_SithumWeerasinghe.pdf"
   download
   className="px-6 py-3 rounded-full text-lg font-medium text-black bg-white hover:bg-gray-200 shadow-lg hover:scale-105 transition-all"
   >My Resume</a>
@@ -197,7 +197,7 @@ useEffect(() => {
     <div
     className ="absolute top-1/2 -translate-y-1/2 pointer-events-none"
     style={{
-      right: "10px",
+      right: "-1px",
       width: "min(22vw, 410px)" , height : "min(40vh, 760px)" ,borderRadius :"50%",
       filter: "blur(38px)",opacity :0.32,
       background : "conic-gradient(from 0deg, #1cd8d2, #00bf8f, #302b63, #1cd8d2)"
@@ -208,11 +208,11 @@ useEffect(() => {
       <img src={avatar} alt="SithumW"
       className="absolute top-1/2 -translate-y-1/2 object-contain select-none pointer-events-none"
       style={{
-        right :"-30px", width: "mon(45vw,780px)", maxHeight :"90vh"
+        right :"-1px", width: "mon(55vw,780px)", maxHeight :"90vh"
 
       }}
       initial={{opacity:0, y:40, scale:0.98}}
-      animate={{opacity:1, y:0, scale:1}}
+      animate={{opacity:1, y:0, scale:1.15}}
       transition={{delay:0.2, duration:0.8}}
 
 

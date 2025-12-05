@@ -1,6 +1,6 @@
 
 import { motion } from "framer-motion";
-import avatar from "../assets/photo01.jpg"; // Your profile photo
+import avatar from "../assets/photo01.png"; // Your profile photo
 
 export default function About(){
   // Background glow effects for visual appeal
@@ -108,10 +108,7 @@ export default function About(){
             {/* About text content */}
             <div className="space-y-6">
               <p className="text-lg sm:text-xl text-white leading-relaxed">
-                I'm a passionate developer and tech enthusiast with a love for creating 
-                innovative solutions and exploring the latest technologies. My journey in 
-                the world of programming has led me through various exciting challenges 
-                and projects.
+                A software developer and undergraduate at the University of Sri Jayewardenepura. My work spans full-stack development, cloud systems, and IoT engineering. I focus on building efficient, reliable, and scalable solutions while constantly learning and exploring new technologies.
               </p>
               
         

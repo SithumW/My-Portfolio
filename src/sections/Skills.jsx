@@ -7,13 +7,13 @@ import {
   FaNodeJs, 
   FaReact, 
   FaPython,
-  FaDatabase
+  FaDatabase,
+  FaJava
 } from "react-icons/fa";
 import { 
   SiExpress, 
   SiAngular, 
   SiArduino, 
-  SiFlask,
   SiMysql
 } from "react-icons/si";
 
@@ -28,7 +28,7 @@ export default function Skills() {
     { name: "Arduino", icon: SiArduino, color: "#00979D" },
     { name: "Python", icon: FaPython, color: "#3776AB" },
     { name: "SQL", icon: SiMysql, color: "#4479A1" },
-    { name: "Flask", icon: SiFlask, color: "#000000" },
+    { name: "Java", icon: FaJava, color: "#007396" },
   ];
 
   // Duplicate skills array for seamless infinite scroll
@@ -90,7 +90,7 @@ export default function Skills() {
                     <IconComponent 
                       className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 transition-colors duration-300"
                       style={{ 
-                        color: skill.name === "Express" || skill.name === "Flask" ? "#ffffff" : skill.color 
+                        color: skill.name === "Express" ? "#ffffff" : skill.color 
                       }}
                     />
                   </div>
