@@ -1,22 +1,14 @@
-
 import { motion } from "framer-motion";
 import avatar from "../assets/photo03.jpeg"; // Your profile photo
 
 export default function About(){
-  // Background glow effects for visual appeal
-  const glows = [
-    "-top-10 -left-10 w-[360px] h-[360px] opacity-20 blur-[120px]",
-    "bottom-0 right-10 w-[420px] h-[420px] opacity-10 blur-[160px] delay-300",
-    "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-[220px] opacity-10 blur-[100px]"
-  ];
 
-  // Animation variants for content
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3,
+        staggerChildren: 0.2,
         duration: 0.8
       }
     }
@@ -32,11 +24,11 @@ export default function About(){
   };
 
   const imageVariants = {
-    hidden: { opacity: 0, scale: 0.8, x: 50 },
+    hidden: { opacity: 0, scale: 0.8, y: 50 },
     visible: { 
       opacity: 1, 
       scale: 1, 
-      x: 0,
+      y: 0,
       transition: { duration: 0.8, ease: "easeOut" }
     }
   };
@@ -48,12 +40,9 @@ export default function About(){
     >
       {/* Background glow effects */}
       <div className="absolute inset-0 pointer-events-none">
-        {glows.map((glow, index) => (
-          <div 
-            key={index} 
-            className={`absolute rounded-full bg-gradient-to-r from-[#302b63] via-[#00bf8f] to-[#1cd8d2] animate-pulse ${glow}`}
-          />
-        ))}
+        <div className="absolute -top-10 -left-10 w-[360px] h-[360px] rounded-full bg-gradient-to-r from-[#302b63] via-[#00bf8f] to-[#1cd8d2] opacity-20 blur-[120px] animate-pulse" />
+        <div className="absolute bottom-0 right-10 w-[420px] h-[420px] rounded-full bg-gradient-to-r from-[#302b63] via-[#00bf8f] to-[#1cd8d2] opacity-10 blur-[160px] animate-pulse delay-300" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-[220px] rounded-full bg-gradient-to-r from-[#302b63] via-[#00bf8f] to-[#1cd8d2] opacity-10 blur-[100px] animate-pulse" />
       </div>
 
       {/* Main content container */}
@@ -65,18 +54,32 @@ export default function About(){
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          {/* Left side - Photo */}
+          {/* Left side - Photo with new frame design */}
           <motion.div 
             className="order-1 lg:order-1 flex justify-center"
             variants={imageVariants}
           >
             <div className="relative">
-              {/* Decorative elements */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-[#302b63] via-[#00bf8f] to-[#1cd8d2] rounded-2xl blur-xl opacity-20 animate-pulse"></div>
+              {/* Dynamic glow backdrop */}
+              <motion.div 
+                className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100"
+                style={{
+                  background: "conic-gradient(from 0deg, #ff6b35, #f7931e, #ffcc02, #ff6b35)",
+                  filter: "blur(40px)"
+                }}
+                animate={{
+                  rotate: 360
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              />
               
-              {/* Photo container */}
-              <div className="relative bg-gradient-to-r from-[#302b63] via-[#00bf8f] to-[#1cd8d2] p-1 rounded-2xl">
-                <div className="bg-black rounded-xl overflow-hidden" style={{ contain: "layout style paint" }}>
+              {/* Main photo frame with gradient border */}
+              <div className="relative bg-gradient-to-br from-[#ff6b35] via-[#1cd8d2] to-[#302b63] p-1.5 rounded-3xl shadow-2xl">
+                <div className="bg-black rounded-3xl overflow-hidden" style={{ contain: "layout style paint" }}>
                   <img 
                     src={avatar} 
                     alt="Profile picture" 
@@ -87,13 +90,34 @@ export default function About(){
                 </div>
               </div>
 
-              {/* Floating decorative elements */}
-              <div className="absolute -top-6 -right-6 w-12 h-12 bg-gradient-to-r from-[#00bf8f] to-[#1cd8d2] rounded-full opacity-60 animate-bounce delay-1000"></div>
-              <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-gradient-to-r from-[#302b63] to-[#00bf8f] rounded-full opacity-40 animate-bounce delay-2000"></div>
+              {/* Floating accent elements */}
+              <motion.div 
+                className="absolute -top-8 -right-8 w-16 h-16 bg-gradient-to-r from-[#ff6b35] to-[#ffcc02] rounded-full opacity-70"
+                animate={{
+                  y: [0, -10, 0],
+                  rotate: 360
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity
+                }}
+              />
+              <motion.div 
+                className="absolute -bottom-6 -left-6 w-12 h-12 bg-gradient-to-r from-[#302b63] to-[#1cd8d2] rounded-full opacity-60"
+                animate={{
+                  y: [0, 10, 0],
+                  x: [0, 5, 0]
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  delay: 1
+                }}
+              />
             </div>
           </motion.div>
 
-          {/* Right side - Content */}
+          {/* Right side - Content with original design */}
           <div 
             className="order-2 lg:order-2 text-center lg:text-left"
           >
@@ -115,11 +139,9 @@ export default function About(){
 
             {/* About text content */}
             <div className="space-y-6">
-              <p className="text-lg sm:text-xl text-white leading-relaxed">
-                A software developer and undergraduate at the University of Sri Jayewardenepura. My work spans full-stack development, cloud systems, and IoT engineering. I focus on building efficient, reliable, and scalable solutions while constantly learning and exploring new technologies.
+              <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
+                Software developer and undergraduate at the University of Sri Jayewardenepura. I specialize in full-stack development, cloud systems, and IoT engineering.
               </p>
-              
-        
             </div>
 
             {/* Skills highlight */}
@@ -148,4 +170,5 @@ export default function About(){
       </div>
     </section>
   );
+
 }

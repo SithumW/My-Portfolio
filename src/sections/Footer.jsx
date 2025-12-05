@@ -14,9 +14,9 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-gray-900 text-white overflow-hidden">
-      {/* Subtle background effect */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+    <footer className="relative bg-black text-white overflow-hidden">
+      {/* Subtle background effect with orange/yellow gradient */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#ff6b35]/10 to-transparent pointer-events-none" />
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
@@ -32,7 +32,7 @@ const Footer = () => {
               className="space-y-4 text-center md:text-left"
             >
               <h3 className="text-2xl font-bold">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00bf8f] to-[#1cd8d2]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff6b35] via-[#f7931e] to-[#ffcc02]">
                   Sithum Weerasinghe
                 </span>
               </h3>
@@ -54,7 +54,7 @@ const Footer = () => {
                   <a
                     key={index}
                     href={link.href}
-                    className="text-gray-400 hover:text-[#00bf8f] transition-colors duration-300 text-sm"
+                    className="text-gray-400 hover:text-[#ff6b35] transition-colors duration-300 text-sm"
                   >
                     {link.name}
                   </a>
@@ -78,8 +78,8 @@ const Footer = () => {
         </motion.div>
       </div>
 
-      {/* Minimal decorative bottom accent */}
-      <div className="h-0.5 bg-gradient-to-r from-transparent via-[#00bf8f] to-transparent opacity-50"></div>
+      {/* Decorative bottom accent with orange/yellow gradient */}
+      <div className="h-0.5 bg-gradient-to-r from-transparent via-[#ff6b35] to-transparent opacity-50"></div>
     </footer>
   );
 };
