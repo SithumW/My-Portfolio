@@ -94,7 +94,7 @@ useEffect(()=>{
 
 <div className="hidden lg:block">
 <a href ="#contact"
-className="bg-gradient-to-r from-grey-500 to-black-500 text-white px-5 py-2 rounded-full font-medium shadow-lg hover:opacity-90 transition-opacity duration-300  hover:border-2">
+className="bg-gradient-to-r from-grey-500 to-black-500 text-white px-5 py-2 rounded-full font-medium shadow-lg hvover:opacity-90 transition-opacity duration-300  hover:border-2">
  Reach Out
   </a>
 </div>

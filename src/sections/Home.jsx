@@ -208,7 +208,7 @@ useEffect(() => {
       <img src={avatar} alt="SithumW"
       className="absolute top-1/2 -translate-y-1/2 object-contain select-none pointer-events-none"
       style={{
-        right :"-1px", width: "mon(55vw,780px)", maxHeight :"90vh"
+        right :"-40px", width: "mon(55vw,780px)", maxHeight :"90vh"
 
       }}
       initial={{opacity:0, y:40, scale:0.98}}
