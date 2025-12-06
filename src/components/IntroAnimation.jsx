@@ -8,16 +8,7 @@ const greetings = useMemo(() => [
   "Hola, ",       // Spanish
   "Bonjour, ",    // French
   "Ciao, ",       // Italian
-  "Olá, ",        // Portuguese
-  "नमस्ते, ",     // Hindi
   "こんにちは, ",  // Japanese (Konnichiwa)
-  "안녕하세요, ",   // Korean (Annyeonghaseyo)
-  "你好, ",        // Chinese (Ni hao)
-  "வணக்கம், ",     // Tamil (Vanakkam)
-  "Привет, ",     // Russian (Privet)
-  "Salam, ",      // Arabic
-  "Hej, ",        // Swedish / Danish
-  "Shalom, ",     // Hebrew
   "ආයුබෝවන්, "  // Sinhala (Ayubowan)
 
 ], []);

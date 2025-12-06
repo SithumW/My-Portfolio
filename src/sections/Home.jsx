@@ -1,8 +1,9 @@
 import { useState, useEffect, useMemo } from "react";
 import ParticlesBackground from "../components/ParticlesBackground";
+import AvatarParticles from "../components/AvatarParticles";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
-import avatar from "../assets/sithumw_superhero_rm-min.png";
+import avatar from "../assets/superhero_2.png";
 
 
 const socials = [ // Social media links
@@ -55,10 +56,17 @@ export default function Home(){
 
 const roles = useMemo(()=> ["Developer", "Innovator","CTF Player","Tech Enthusiast"],[]);
 
-const [avatarLoaded, setAvatarLoaded] = useState(false);
+const [avatarLoaded, setAvatarLoaded] = useState(true);
 const [index, setIndex] =useState (0);        // Current role index
 const [subindex, setSubindex] = useState (0); // Current character index
 const [deleting, setDeleting] = useState (false); // Whether currently deleting characters
+
+const handleSmoothScroll = (sectionId) => {
+  const element = document.getElementById(sectionId);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+};
 
 
 
@@ -87,11 +95,9 @@ useEffect(() => {
   return () => clearTimeout(timeout);
 }, [subindex, index, deleting, roles]);
 
-// Preload avatar image
+// Avatar is loaded immediately since it's a static image
 useEffect(() => {
-  const img = new Image();
-  img.onload = () => setAvatarLoaded(true);
-  img.src = avatar;
+  setAvatarLoaded(true);
 }, []);
 
 // Show loading screen until avatar is loaded
@@ -103,6 +109,7 @@ if (!avatarLoaded) {
     <section
     id="home" className="w-full h-screen relative bg-black overflow-hidden">
       <ParticlesBackground/>
+      <AvatarParticles/>
       <div className="absolute inset-0">
 
         <div className="absolute -top-58 -left-78
@@ -190,12 +197,15 @@ if (!avatarLoaded) {
   transition={{delay:0.8, duration:0.8}}>
 
 
-  <a href ="#projects"
+  <motion.button
+  onClick={() => handleSmoothScroll('projects')}
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
   className="px-6 py-3 rounded-full font-medium text-lg text-white
   bg-gradient-to-r from-[#ffcc02] via-[#ff6b35] to-[#ff6b35]
   shadow-lg hover:scale-105 transition-all"
 
-  >View My Work</a>
+  >View My Work</motion.button>
 
   <a href ="/CV_SithumWeerasinghe.pdf"
   download
@@ -232,34 +242,36 @@ if (!avatarLoaded) {
 
     <div className="relative hidden lg:block">
 
-    <div
+    <motion.div
     className ="absolute pointer-events-none -z-10"
     style={{
-      top: "calc(50% - 20px)",
-      right: "calc(-110px + min(55vw,780px)/2 - min(22vw, 410px)/2)",
-      transform: "translateY(-65%)",
+      top: "calc(25% - 20px)",
+      right: "calc(-110px + min(55vw,780px)/2 - min(22vw, 410px)/2 - min(22vw, 410px) * 0.05)",
+      transform: "translateY(-35%)",
       width: "min(22vw, 410px)" , height : "min(40vh, 760px)" ,borderRadius :"50%",
-      filter: "blur(38px)",opacity :0.32,
+      filter: "blur(38px)",
       background : "conic-gradient(from 0deg, #ff6b35, #f7931e, #ffcc02, #ff6b35)"
     }}
+    animate={{ opacity: [0.25, 0.4, 0.25] }}
+    transition={{ duration: 4, repeat: Infinity }}
     
     />
 
-      <motion.img src={avatar} alt="SithumW"
-      className="absolute top-1/2 -translate-y-1/2 object-contain select-none pointer-events-none"
-      style={{
-        right :"-40px", 
-        width: "min(55vw,780px)", 
-        maxHeight :"90vh", 
-        aspectRatio: "1/1",
-        bottom:"10px"
-      }}
-      loading="eager"
-      initial={{opacity:0, y:40, scale:0.98}}
-      animate={{opacity:1, y:0, scale:1.03}}
-      transition={{delay:0.2, duration:0.8}}
-      onLoad={() => setAvatarLoaded(true)}
-
+      <motion.img
+        src={avatar}
+        alt="SithumW"
+        className="absolute top-1/2 -translate-y-1/2 object-contain select-none pointer-events-none"
+        style={{
+          right: "-40px",
+          width: "min(55vw,780px)",
+          maxHeight: "90vh",
+          aspectRatio: "1/1",
+          bottom: "10px"
+        }}
+        loading="eager"
+        initial={{ opacity: 0, y: 40, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1.03 }}
+        transition={{ delay: 0.2, duration: 0.8 }}
       />
     </div>
 

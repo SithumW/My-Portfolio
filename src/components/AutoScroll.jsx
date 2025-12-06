@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaPlay, FaPause } from 'react-icons/fa';
+import { FaPlay, FaPause, FaArrowUp } from 'react-icons/fa';
 
 const AutoScroll = () => {
   const [isScrolling, setIsScrolling] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const [isAtBottom, setIsAtBottom] = useState(false);
   const scrollTimerRef = useRef(null);
   const hideTimerRef = useRef(null);
   const isScrollingRef = useRef(false);
@@ -18,6 +19,7 @@ const AutoScroll = () => {
   const startScroll = () => {
     isScrollingRef.current = true;
     setIsScrolling(true);
+    setIsAtBottom(false);
 
     scrollTimerRef.current = setInterval(() => {
       const { scrollY } = window;
@@ -26,15 +28,25 @@ const AutoScroll = () => {
 
       if (scrollY + winHeight >= docHeight - 100) {
         stopScroll();
+        setIsAtBottom(true);
         return;
       }
 
       window.scrollBy(0, 2);
-    }, 16); // 60fps for smooth scrolling
+    }, 16);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setIsAtBottom(false);
   };
 
   const handleToggle = () => {
-    isScrollingRef.current ? stopScroll() : startScroll();
+    if (isAtBottom) {
+      scrollToTop();
+    } else {
+      isScrollingRef.current ? stopScroll() : startScroll();
+    }
   };
 
   useEffect(() => {
@@ -51,6 +63,7 @@ const AutoScroll = () => {
     window.addEventListener('keydown', (e) => {
       if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', ' ', 'Home', 'End'].includes(e.key)) {
         stopOnInteraction();
+        setIsAtBottom(false);
       }
     });
 
@@ -74,17 +87,18 @@ const AutoScroll = () => {
           className="fixed bottom-8 right-8 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-[#ff6b35] via-[#f7931e] to-[#ffcc02] text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          aria-label={isScrolling ? 'Stop auto-scroll' : 'Start auto-scroll'}
+          aria-label={isAtBottom ? 'Back to top' : isScrolling ? 'Stop auto-scroll' : 'Start auto-scroll'}
         >
-          {isScrolling ? (
+          {isAtBottom ? (
+            <FaArrowUp className="text-lg" />
+          ) : isScrolling ? (
             <FaPause className="text-lg" />
           ) : (
             <FaPlay className="text-lg ml-1" />
           )}
           
-          {/* Tooltip */}
           <span className="absolute bottom-full mb-2 px-3 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-            {isScrolling ? 'Pause' : 'Auto-scroll'}
+            {isAtBottom ? 'Back to Top' : isScrolling ? 'Pause' : 'Auto-scroll'}
           </span>
 
           {/* Animated ring when scrolling */}

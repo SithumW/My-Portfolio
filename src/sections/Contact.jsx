@@ -15,6 +15,13 @@ const Contact = () => {
   const [submitStatus, setSubmitStatus] = useState('');
   const formRef = useRef();
 
+  const handleScrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   const handleInputChange = (e) => {
     setFormData({
       ...formData,

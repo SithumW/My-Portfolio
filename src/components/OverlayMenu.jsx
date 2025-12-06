@@ -4,12 +4,16 @@ import { FiX } from "react-icons/fi";
 
 export default function OverlayMenu({isOpen,onClose}){
 
-
-
   const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
   const origin = isMobile ? "95% 8%" : "50% 8%";
-   
-
+  
+  const handleNavClick = (sectionId) => {
+    onClose();
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   return(
 
@@ -37,18 +41,21 @@ export default function OverlayMenu({isOpen,onClose}){
           "About",
           "Skills",
           "Projects",
-          "Experience",
-          "Testimonials",
           "Contact",
         ].map((item,index) => (
           <motion.li key={item}
           initial = {{opacity:0, y:20}}
           animate={{opacity:1, y:0}}
           transition={{delay:0.3 + index *0.1}}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           >
 
-          <a href={ `#${item.toLocaleLowerCase()}` }
-          onClick={onClose}
+          <a href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            handleNavClick(item.toLowerCase());
+          }}
           className="text-4xl text-white font-semibold hover:text-pink-400 transition-colors duration-300"
           >
             {item}
