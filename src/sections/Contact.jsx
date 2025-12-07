@@ -128,7 +128,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="relative min-h-screen w-full bg-black overflow-hidden py-44 sm:py-40 px-4">
+    <section id="contact" className="relative min-h-screen w-full bg-black overflow-hidden px-4 flex items-center justify-center">
       <ParticlesBackground />
       
       {/* Animated background blobs matching HomePage theme */}
