@@ -3,7 +3,7 @@ import ParticlesBackground from "../components/ParticlesBackground";
 import AvatarParticles from "../components/AvatarParticles";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
-import avatar from "../assets/superhero_4.png";
+import superheroVid from "../assets/superhuman_vid.webm";
 
 
 const socials = [ // Social media links
@@ -95,12 +95,24 @@ useEffect(() => {
   return () => clearTimeout(timeout);
 }, [subindex, index, deleting, roles]);
 
-// Avatar is loaded immediately since it's a static image
+// Preload video
 useEffect(() => {
-  setAvatarLoaded(true);
+  const video = document.createElement('video');
+  video.src = superheroVid;
+  video.preload = 'metadata';
+  video.oncanplaythrough = () => {
+    setAvatarLoaded(true);
+  };
+  video.onerror = () => {
+    setAvatarLoaded(true);
+  };
+
+  return () => {
+    video.src = '';
+  };
 }, []);
 
-// Show loading screen until avatar is loaded
+// Show loading screen until content is ready
 if (!avatarLoaded) {
   return <LoadingScreen />;
 }
@@ -246,10 +258,10 @@ if (!avatarLoaded) {
     className ="absolute pointer-events-none -z-10"
     style={{
       top: "calc(25% - 20px)",
-      right: "calc(-110px + min(55vw,780px)/2 - min(22vw, 410px)/2 - min(22vw, 410px) * 0.05)",
-      transform: "translateY(-35%)",
+      right: "calc(-101px + min(55vw,780px)/2 - min(22vw, 410px)/2 - min(22vw, 410px) * 0.05)",
+      transform: "translateY(-26%)",
       width: "min(22vw, 410px)" , height : "min(40vh, 760px)" ,borderRadius :"50%",
-      filter: "blur(38px)",
+      filter: "blur(80px)",
       background : "conic-gradient(from 0deg, #ff6b35, #f7931e, #ffcc02, #ff6b35)"
     }}
     animate={{ opacity: [0.25, 0.4, 0.25] }}
@@ -257,20 +269,23 @@ if (!avatarLoaded) {
     
     />
 
-      <motion.img
-        src={avatar}
-        alt="SithumW"
+      {/* Video */}
+      <motion.video
+        src={superheroVid}
+        autoPlay
+        loop
+        muted
+        preload="metadata"
         className="absolute top-1/2 -translate-y-1/2 object-contain select-none pointer-events-none"
         style={{
-          right: "-40px",
-          width: "min(55vw,780px)",
-          maxHeight: "90vh",
+          right: "-30px",
+          width: "150vw",
+          maxHeight: "120vh",
           aspectRatio: "1/1",
           bottom: "10px"
         }}
-        loading="eager"
         initial={{ opacity: 0, y: 40, scale: 0.98 }}
-        animate={{ opacity: 1, y: 0, scale: 1.03 }}
+        animate={{ opacity: 1, y: 0, scale: 1.7}}
         transition={{ delay: 0.2, duration: 0.8 }}
       />
     </div>

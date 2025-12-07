@@ -4,13 +4,13 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function IntroAnimation({ onFinish }) {
 
 const greetings = useMemo(() => [
-  "Hello, ",
-  "Hola, ",       // Spanish
-  "Bonjour, ",    // French
-  "Ciao, ",       // Italian
-  "こんにちは, ",  // Japanese (Konnichiwa)
-  "ආයුබෝවන්, "  // Sinhala (Ayubowan)
-
+  "S ",
+  "I ",       // Spanish
+  "T ",    // French
+  "H ",       // Italian
+  "U ",  // Japanese (Konnichiwa)
+  "M ",  // Sinhala (Ayubowan)
+  "W"
 ], []);
 
 const [index, setIndex] = useState(0);

@@ -29,7 +29,7 @@ export default function AvatarParticles() {
         this.vx = (Math.random() - 0.5) * 0.5;
         this.vy = (Math.random() - 0.5) * 0.5;
         this.radius = Math.random() * 1 + 0.5;
-        this.color = "rgba(255,255,255,0.7)";
+        this.color = "rgba(255, 107, 53, 0.7)";
         this.life = 1;
       }
 
@@ -44,8 +44,8 @@ export default function AvatarParticles() {
         }
 
         const angle = Math.atan2(dy, dx);
-        this.vx += Math.cos(angle) * 0.2;
-        this.vy += Math.sin(angle) * 0.2;
+        this.vx += Math.cos(angle) * 0.1;
+        this.vy += Math.sin(angle) * 0.05;
 
         this.vx *= 0.98;
         this.vy *= 0.98;
@@ -72,26 +72,26 @@ export default function AvatarParticles() {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Find avatar image in Home section
+      // Find avatar video in Home section
       const homeSection = document.getElementById("home");
-      const avatarImg = homeSection ? homeSection.querySelector("img[alt='SithumW']") : null;
+      const avatarElement = homeSection ? homeSection.querySelector("video") : null;
       
-      if (avatarImg && homeSection) {
+      if (avatarElement && homeSection) {
         const homeRect = homeSection.getBoundingClientRect();
         
         // Only render if Home section is visible
         if (homeRect.top < window.innerHeight && homeRect.bottom > 0) {
-          const imgRect = avatarImg.getBoundingClientRect();
+          const imgRect = avatarElement.getBoundingClientRect();
           
           // POSITION ADJUSTMENT - Modify these values to move the particle center:
           // avatarX controls horizontal position (left=0, right=1)
           // avatarY controls vertical position (top=0, bottom=1)
           // For gem center on chest, adjust the divisors:
           const avatarX = imgRect.left + imgRect.width / 1.9;      // Horizontal: width/2 = center
-          const avatarY = imgRect.top + imgRect.height / 4.2;    // Vertical: Change 2.8 to adjust height (smaller = higher, larger = lower)
+          const avatarY = imgRect.top + imgRect.height / 2.8;    // Vertical: Change 2.8 to adjust height (smaller = higher, larger = lower)
 
           // Spawn new particles
-          if (Math.random() < 0.3) {
+          if (Math.random() < 0.5) {
             for (let i = 0; i < 2; i++) {
               particles.push(new Particle(avatarX, avatarY));
             }
