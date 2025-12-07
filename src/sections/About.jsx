@@ -15,23 +15,20 @@ export default function About(){
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, x: -50, rotateY: -20 },
-    visible: { 
-      opacity: 1, 
-      x: 0,
-      rotateY: 0,
-      transition: { duration: 0.7, ease: "easeOut" }
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
     }
   };
 
   const imageVariants = {
-    hidden: { opacity: 0, x: 50, rotateY: 20, scale: 0.9 },
-    visible: { 
-      opacity: 1, 
-      x: 0,
-      rotateY: 0,
-      scale: 1,
-      transition: { duration: 0.8, ease: "easeOut" }
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
     }
   };
 

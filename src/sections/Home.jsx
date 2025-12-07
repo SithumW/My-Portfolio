@@ -3,7 +3,7 @@ import ParticlesBackground from "../components/ParticlesBackground";
 import AvatarParticles from "../components/AvatarParticles";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
-import avatar from "../assets/superhero_2.png";
+import avatar from "../assets/superhero_4.png";
 
 
 const socials = [ // Social media links
