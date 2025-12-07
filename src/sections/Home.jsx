@@ -56,7 +56,7 @@ export default function Home(){
 
 const roles = useMemo(()=> ["Developer", "Innovator","CTF Player","Tech Enthusiast"],[]);
 
-const [avatarLoaded, setAvatarLoaded] = useState(true);
+const [avatarLoaded, setAvatarLoaded] = useState(false);
 const [index, setIndex] =useState (0);        // Current role index
 const [subindex, setSubindex] = useState (0); // Current character index
 const [deleting, setDeleting] = useState (false); // Whether currently deleting characters
