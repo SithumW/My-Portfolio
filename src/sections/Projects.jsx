@@ -73,30 +73,30 @@ export default function Projects(){
 const projects = useMemo(() => [
   {
     title: "Swappo",
-    link: "https://github.com/SithumW/Swappo.git",
+    link: "https://github.com/SithumW/Swappo",
     description: "A location-based e-commerce platform where users can buy, sell, and swap products nearby using React, Node.js, and MongoDB.",
     bgColor: "#327284aa",
     image: isMobile ? swappoImg : swappoImgWide
   },
   {
     title: "SparkSense",
-    link: "https://github.com/SithumW/SparkSense.git",
+    link: "https://github.com/SithumW/SparkSense",
     description: "An IoT-powered energy monitoring system that tracks and visualizes real-time power usage with ESP32 and AWS integration.",
     bgColor: "#299ae0ff",
     image: isMobile ? sparksenseImg : sparksenseImgWide
   },
   {
     title: "Spring Microservices",
-    link: "https://github.com/SithumW/Ecommerce-microservices.git",
+    link: "https://github.com/SithumW/Ecommerce-microservices",
     description: "A Spring Boot microservices-based e-commerce application with independent services for order management, product catalog, and user management.",
     bgColor: "#b68d57ff",
     image: isMobile ? ecom_image : ecom_wide_image
   },
   {
     title: "POS System (Angular)",
-    link: "https://github.com/SithumW/Pos-System-Devops.git",
+    link: "https://github.com/SithumW/Pos-System-Devops",
     description: "A modern Point of Sale system built with Angular and Express, featuring inventory management and real-time billing.",
-    bgColor: "#076d7dff",
+    bgColor: "#071116",
     image: isMobile ? posImg : posImgWide
   }
 ], [isMobile]); //re run only when isMobile changes
@@ -186,7 +186,7 @@ const activeProject = projects[activeIndex];
             ${ 
               isMobile ? "mb-6 rounded-lg" : "mb-10 sm:mb-12 rounded-xl"         
             }
-            h-[62vh] sm:h-[66vh]
+            h-[62vh] sm:h-[66vh] flex items-center justify-center
             `}
             style={{
               zIndex: 10,
@@ -195,28 +195,20 @@ const activeProject = projects[activeIndex];
             }}
           >
             <img src={project.image} alt={project.title}
-            className="w-full h-full object-cover drop-shadow-xl md:drop-shadow-2xl"
+            className="drop-shadow-2xl"
             style={{ 
               position: "relative",
               zIndex: 10,
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              filter: "drop-shadow(0 16px 40px rgba(0,0,0,0.65))",
-              transition: "filter 200ms ease"
+              maxWidth: "100%",
+              maxHeight: "100%",
+              width: "auto",
+              height: "auto",
+              objectFit: "contain",
+              transition: "filter 200ms ease",
+              borderRadius: "12px"
             }}
-            loading ="lazy" //lazy loading for performance
+            loading ="lazy"
             />
-            
-            <div className = "pointer-events-none absolute inset-0"
-            style={{
-              zIndex : 11,
-              background : "linear-gradient(180deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0) 40%)"
-            }}>
-
-
-              </div>
-            
           </div>
        </div>
           );

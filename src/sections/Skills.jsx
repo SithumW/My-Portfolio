@@ -37,20 +37,20 @@ export default function Skills() {
   return (
     <section 
       id="skills"
-      className="w-full h-[25vh] min-h-[300px] flex flex-col items-center justify-center relative bg-gradient-to-r from-gray-900 via-black to-gray-900 overflow-hidden"
+      className="w-full h-[25vh] min-h-[300px] flex flex-col items-center justify-center relative bg-black/80 backdrop-blur-md border-t border-b border-slate-800/50 overflow-hidden"
       style={{ contain: "layout style paint" }}
     >
       {/* Skills Title */}
       <div className="absolute top-4 sm:top-6 md:top-8 left-1/2 transform -translate-x-1/2 z-30">
         <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white text-center">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00bf8f] to-[#1cd8d2] padding-y-2">
+          <span className="text-white padding-y-2">
             Skills
           </span>
         </h2>
       </div>
 
-      {/* Background gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50 z-10 pointer-events-none"></div>
+      {/* Background overlay */}
+      <div className="absolute inset-0 bg-black/20 z-10 pointer-events-none"></div>
       
       {/* Scrolling container */}
       <div className="relative z-0 w-full h-full flex items-center mt-8 sm:mt-10 md:mt-12">
@@ -108,8 +108,8 @@ export default function Skills() {
       </div>
 
       {/* Fade edges for smooth appearance */}
-      <div className="absolute left-0 top-0 w-20 sm:w-32 md:w-40 h-full bg-gradient-to-r from-black to-transparent z-20 pointer-events-none"></div>
-      <div className="absolute right-0 top-0 w-20 sm:w-32 md:w-40 h-full bg-gradient-to-l from-black to-transparent z-20 pointer-events-none"></div>
+      <div className="absolute left-0 top-0 w-20 sm:w-32 md:w-40 h-full bg-gradient-to-r from-black/80 to-transparent z-20 pointer-events-none"></div>
+      <div className="absolute right-0 top-0 w-20 sm:w-32 md:w-40 h-full bg-gradient-to-l from-black/80 to-transparent z-20 pointer-events-none"></div>
     </section>
   );
 }

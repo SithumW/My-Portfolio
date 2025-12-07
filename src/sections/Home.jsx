@@ -107,7 +107,7 @@ if (!avatarLoaded) {
 
   return (
     <section
-    id="home" className="w-full h-screen relative bg-black overflow-hidden">
+    id="home" className="w-full h-screen relative bg-black overflow-hidden font-sans">
       <ParticlesBackground/>
       <AvatarParticles/>
       <div className="absolute inset-0">

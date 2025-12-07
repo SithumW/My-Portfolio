@@ -7,6 +7,7 @@ import Projects from "./sections/Projects";
 import Skills from "./sections/Skills";
 import Testimonials from "./sections/Testimonials";
 import Contact from "./sections/Contact";
+import Education from "./sections/Education";
 import ParticlesBackground from "./components/ParticlesBackground";
 import CustomCursor from "./components/CustomCursor";
 import AutoScroll from "./components/AutoScroll";
@@ -34,6 +35,7 @@ const [introDone, setIntroDone] = useState(false);
       <Home />
       <About />
       <Skills />
+      <Education />
       <Projects />
  {/*     <Experience />
       <Testimonials /> */} 
