@@ -86,7 +86,7 @@ const Footer = () => {
           <p className="text-xs text-slate-600">
             © {currentYear} SithumW. All rights reserved.
           </p>
-          <p className="text-xs sm:text-xs text-slate-500 select-none">
+          <p className="text-[8px] sm:text-[9px] text-slate-500 select-none">
             aHR0cHM6Ly95b3V0dS5iZS92aWlyQlhPWTZvWQ==
           </p>
         </motion.div>
