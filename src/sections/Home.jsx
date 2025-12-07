@@ -57,6 +57,7 @@ export default function Home(){
 const roles = useMemo(()=> ["Developer", "Innovator","CTF Player","Tech Enthusiast"],[]);
 
 const [avatarLoaded, setAvatarLoaded] = useState(false);
+const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
 const [index, setIndex] =useState (0);        // Current role index
 const [subindex, setSubindex] = useState (0); // Current character index
 const [deleting, setDeleting] = useState (false); // Whether currently deleting characters
@@ -67,6 +68,16 @@ const handleSmoothScroll = (sectionId) => {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 };
+
+// Detect screen size changes
+useEffect(() => {
+  const handleResize = () => {
+    setIsDesktop(window.innerWidth >= 1024);
+  };
+  
+  window.addEventListener('resize', handleResize);
+  return () => window.removeEventListener('resize', handleResize);
+}, []);
 
 
 
@@ -95,11 +106,17 @@ useEffect(() => {
   return () => clearTimeout(timeout);
 }, [subindex, index, deleting, roles]);
 
-// Preload video
+// Preload video only on desktop
 useEffect(() => {
+  // On mobile, skip video loading and go straight to loaded state
+  if (!isDesktop) {
+    setAvatarLoaded(true);
+    return;
+  }
+
   const video = document.createElement('video');
   video.src = superheroVid;
-  video.preload = 'metadata';
+  video.preload = 'none';
   video.oncanplaythrough = () => {
     setAvatarLoaded(true);
   };
@@ -110,7 +127,7 @@ useEffect(() => {
   return () => {
     video.src = '';
   };
-}, []);
+}, [isDesktop]);
 
 // Show loading screen until content is ready
 if (!avatarLoaded) {
@@ -121,7 +138,7 @@ if (!avatarLoaded) {
     <section
     id="home" className="w-full h-screen relative bg-black overflow-hidden font-sans">
       <ParticlesBackground/>
-      <AvatarParticles/>
+      {isDesktop && <AvatarParticles/>}
       <div className="absolute inset-0">
 
         <div className="absolute -top-58 -left-78
@@ -269,25 +286,27 @@ if (!avatarLoaded) {
     
     />
 
-      {/* Video */}
-      <motion.video
-        src={superheroVid}
-        autoPlay
-        loop
-        muted
-        preload="metadata"
-        className="absolute top-1/2 -translate-y-1/2 object-contain select-none pointer-events-none"
-        style={{
-          right: "-30px",
-          width: "150vw",
-          maxHeight: "120vh",
-          aspectRatio: "1/1",
-          bottom: "10px"
-        }}
-        initial={{ opacity: 0, y: 40, scale: 0.98 }}
-        animate={{ opacity: 1, y: 0, scale: 1.7}}
-        transition={{ delay: 0.2, duration: 0.8 }}
-      />
+      {/* Video - Only loaded on desktop */}
+      {isDesktop && (
+        <motion.video
+          src={superheroVid}
+          autoPlay
+          loop
+          muted
+          preload="none"
+          className="absolute top-1/2 -translate-y-1/2 object-contain select-none pointer-events-none"
+          style={{
+            right: "-30px",
+            width: "150vw",
+            maxHeight: "120vh",
+            aspectRatio: "1/1",
+            bottom: "10px"
+          }}
+          initial={{ opacity: 0, y: 40, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1.7}}
+          transition={{ delay: 0.2, duration: 0.8 }}
+        />
+      )}
     </div>
 
 
