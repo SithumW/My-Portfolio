@@ -44,7 +44,6 @@ const LoadingScreen = () => {
           animate={{ opacity: [1, 0.5, 1] }}
           transition={{ duration: 1.5, repeat: Infinity }}
         >
-          Loading...
         </motion.h2>
       </div>
     </div>
@@ -106,7 +105,7 @@ useEffect(() => {
   return () => clearTimeout(timeout);
 }, [subindex, index, deleting, roles]);
 
-// Preload video only on desktop
+// Load video on desktop, skip on mobile
 useEffect(() => {
   // On mobile, skip video loading and go straight to loaded state
   if (!isDesktop) {
@@ -114,19 +113,22 @@ useEffect(() => {
     return;
   }
 
-  const video = document.createElement('video');
-  video.src = superheroVid;
-  video.preload = 'none';
-  video.oncanplaythrough = () => {
-    setAvatarLoaded(true);
-  };
-  video.onerror = () => {
-    setAvatarLoaded(true);
-  };
-
-  return () => {
-    video.src = '';
-  };
+  // On desktop, wait for video to load
+  const videoElement = document.querySelector('video');
+  if (videoElement) {
+    const handleCanPlay = () => {
+      setAvatarLoaded(true);
+    };
+    
+    videoElement.addEventListener('canplay', handleCanPlay);
+    return () => videoElement.removeEventListener('canplay', handleCanPlay);
+  } else {
+    // Fallback: if video not found, load anyway after a delay
+    const timer = setTimeout(() => {
+      setAvatarLoaded(true);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }
 }, [isDesktop]);
 
 // Show loading screen until content is ready

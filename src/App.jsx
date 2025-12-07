@@ -1,11 +1,9 @@
 import Navbar from "./components/Navbar";
 import About from "./sections/About";
-import Experience from "./sections/Experience";
 import Footer from "./sections/Footer";
 import Home from "./sections/Home";
 import Projects from "./sections/Projects";
 import Skills from "./sections/Skills";
-import Testimonials from "./sections/Testimonials";
 import Contact from "./sections/Contact";
 import Education from "./sections/Education";
 import ParticlesBackground from "./components/ParticlesBackground";
@@ -37,8 +35,6 @@ const [introDone, setIntroDone] = useState(false);
       <Skills />
       <Education />
       <Projects />
- {/*     <Experience />
-      <Testimonials /> */} 
       <Contact/>
       <Footer />
 
