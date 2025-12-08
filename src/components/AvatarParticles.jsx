@@ -21,8 +21,22 @@ export default function AvatarParticles() {
     // Particle class
     class Particle {
       constructor(targetX, targetY) {
-        const angle = Math.random() * Math.PI * 2;
-        const radius = 1250;
+        // Spawn particles from left, right, and bottom (no top)
+        let angle;
+        const random = Math.random();
+        
+        if (random < 0.333) {
+          // 33% chance: left side
+          angle = (Math.random() - 0.5) * 1.2;
+        } else if (random < 0.666) {
+          // 33% chance: right side
+          angle = Math.PI + (Math.random() - 0.5) * 1.2;
+        } else {
+          // 33% chance: bottom
+          angle = Math.PI / 2 + (Math.random() - 0.5) * 1.2;
+        }
+        
+        const radius = 1200;
         
         this.x = targetX + Math.cos(angle) * radius;
         this.y = targetY + Math.sin(angle) * radius;
@@ -91,8 +105,8 @@ export default function AvatarParticles() {
           const avatarY = imgRect.top + imgRect.height / 2.8;    // Vertical: Change 2.8 to adjust height (smaller = higher, larger = lower)
 
           // Spawn new particles
-          if (Math.random() < 0.5) {
-            for (let i = 0; i < 2; i++) {
+          if (Math.random() < 0.3) {
+            for (let i = 0; i < 1.4; i++) {
               particles.push(new Particle(avatarX, avatarY));
             }
           }
