@@ -9,6 +9,7 @@ import Education from "./sections/Education";
 import ParticlesBackground from "./components/ParticlesBackground";
 import CustomCursor from "./components/CustomCursor";
 import AutoScroll from "./components/AutoScroll";
+import SEOHead from "./components/SEOHead";
 import { useState } from "react";
 import IntroAnimation from "./components/IntroAnimation";
 
@@ -21,6 +22,7 @@ const [introDone, setIntroDone] = useState(false);
   return (
 
     <>
+    <SEOHead />
     {!introDone && <IntroAnimation onFinish={()=> setIntroDone (true)} />}
 
     {introDone && (
@@ -30,12 +32,14 @@ const [introDone, setIntroDone] = useState(false);
       <AutoScroll/>
 {  /*    <ParticlesBackground/> */}
       <Navbar />
-      <Home />
-      <About />
-      <Skills />
-      <Education />
-      <Projects />
-      <Contact/>
+      <main>
+        <Home />
+        <About />
+        <Skills />
+        <Education />
+        <Projects />
+        <Contact/>
+      </main>
       <Footer />
 
 

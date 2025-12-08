@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Disallow: /node_modules/
+Disallow: /src/
+Disallow: /dist/
+Disallow: /*.json
+Disallow: /*.jsx
+
+# Sitemap
+Sitemap: https://sithumweerasinghe.com/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1

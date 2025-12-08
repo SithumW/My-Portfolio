@@ -210,7 +210,7 @@ if (!avatarLoaded) {
             <br/>
             <span className="text-white sm:text-5xl md:text-6xl lg:text-7xl font-bold lg:whitespace-nowrap" >
     
-              Sithum  Weerasinghe
+              Sithum Weerasinghe
             </span>
           </motion.h1>
 
@@ -219,7 +219,7 @@ if (!avatarLoaded) {
           animate={{opacity:1, y:0}}
           transition={{delay : 0.4, duration:0.8}}
           >
-            I love bringing ideas to life through code, blending creativity, technology, and a bit of curiosity to build things that are smart, useful, and fun to create.
+            I'm a full stack developer (SithumW) specializing in building innovative, scalable web applications. I blend creativity, technology, and expertise to create solutions that are smart, useful, and engaging.
           </motion.p>
 
 <motion.div className ="mt-10 flex flex-wrap itemx-center justify-center lg:justify-start gap-6" 
